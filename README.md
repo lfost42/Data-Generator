@@ -1,7 +1,9 @@
 # Aline Data Generation
 
 ## Usage
-These scripts were used to generate data to persist in a MySql database for testing, staging, and deployment of the Aline Financial Application. 
+This Python package was developed to generate data to persist in a MySql database for testing our implementation of the Aline Financial Application. As such, these were meant to be configired and used by software engineers.
+
+The Applicants generator leverages the Underwriter microservice. It requires initial configuration in the config.py file where methods can be set to run or not run and method values are also set.  
 
 ## Installation
 [Aline Financial](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster) application repositories.
