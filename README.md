@@ -6,7 +6,42 @@ This Python package was developed to generate data to persist in a MySql databas
 The Applicants generator leverages the Underwriter microservice. It requires initial configuration in the config.py file where methods can be set to run or not run and method values are also set.  
 
 ## Installation
+
+# Requirements:
+Docker Desktop
+[VS Code](https://code.visualstudio.com)
+    -[Docker extension](https://code.visualstudio.com/docs/containers/overview)
+
+1. In a single folder, clone all Aline Financial repositories
 [Aline Financial](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster) application repositories.
+
+2. Initialize and merge submodules.
+
+In aline-user-microservice and aline-underwriter-microservice run:
+`git submodule deinit -f .`
+`git submodule update --init --remote --merge`
+
+3. Run microservices:
+
+Right-click docker-compose.yml and select "Compose Up - Select Service" from menu. 
+
+Check boxes for the following options:
+`mysql`
+`underwriter`
+`user`
+
+Click OK
+
+4. Set up testing scripts:
+
+In the devops-data-generato folder, modify config.py in your IDE or other text editor to verify which methods and variables are required to accomplish the tests needed. 
+
+5. Run testing scripts:
+
+Run main.py
+
+In command line:  
+`python main.py` or `python3 main.py`
 
 ## Support
 lynda.foster@smoothstack.com<br>
