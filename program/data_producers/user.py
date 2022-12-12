@@ -3,8 +3,8 @@ Produces random data for users through the user microservice endpoints.
 """
 import requests
 from ...config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
-    ADMIN_PASSWORD, ADMIN_EMAIL, ADMIN_PHONE
-from ..utils import random_user_id
+    ADMIN_PASSWORD, ADMIN_EMAIL, ADMIN_PHONE, RANDOM_USERNAME
+from ..utils import random_user_id, random_num
 from ..logging_handler import logger
 
 
@@ -19,8 +19,14 @@ def create_admin_login():
     user = random_user_id()
     first_name = user[0]
     last_name = user[2]
+
+    if RANDOM_USERNAME is True:
+        username = f"{ADMIN_USERNAME}{random_num(4)}"
+    else:
+        username = ADMIN_USERNAME
+
     admin_data = {
-        "username" : ADMIN_USERNAME,
+        "username" : username,
         "password" : ADMIN_PASSWORD,
         "role" : "admin",
         "firstName" : first_name,
