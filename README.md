@@ -37,11 +37,15 @@ Check boxes for the following options:
 
 Click OK
 
-4. Set up testing scripts:
+4. Create a python environment, activate environment, and install requirements. 
+
+`pip intstall -r requirements.txt`
+
+5. Set up testing scripts:
 
 In the devops-data-generato folder, modify config.py in your IDE or other text editor to verify which methods and variables are required to accomplish the tests needed. 
 
-5. Run testing scripts:
+6. Run testing scripts:
 
 Run main.py
 
