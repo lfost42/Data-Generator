@@ -39,6 +39,6 @@ def create_admin_login():
 
     if response.status_code == 201:
         logger.info("SUCCESS: Created admin user")
-        return response
+        return response.status_code
     logger.error("Admin not created.")
     return response.status_code
