@@ -1,4 +1,4 @@
 '''
 Tests user producer methods. 
 '''
-import main.data_producers.user
+import app.data_producers.user

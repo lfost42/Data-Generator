@@ -1,11 +1,11 @@
 """
-Produces random data for applicant through the underwriter microservice endpoints.
+Produces random data for applicant through underwriter
+microservice endpoints.
 """
 import requests
-import config
-from main.logging_handler import logger
-from main.utils import random_user_id, random_user_info
-from main.data_producers.user import get_header
+from ...config import APPLICANTS_ENDPOINT
+from ..logging_handler import logger
+from ..utils import random_user_id, random_user_info, get_header
 
 
 def create_applicant(num_applicants):
@@ -17,7 +17,7 @@ def create_applicant(num_applicants):
     Returns:
         string: Response if successful, status code if not.
     """
-    url = config.applicants_endpoint
+    url = APPLICANTS_ENDPOINT
     first_name, middle_name, last_name, email = random_user_id()
     social_security, drivers_license, phone_number, income, address = random_user_info()
 
@@ -45,10 +45,10 @@ def create_applicant(num_applicants):
         response = requests.post(url, json = data, headers=get_header(), timeout=1000)
 
         if response.status_code == 201:
-            logger.debug(f"{response.status_code}: Create applicant \
-                {last_name}, {first_name} successful.")
+            logger.info("SUCCESS: Created applicant \
+                {last_name}, {first_name}.")
             return response
-        logger.error(f"{response.status_code}: Create applicant failed.")
+        logger.error("Create applicant failed.")
         return response.status_code
 
 
@@ -59,11 +59,11 @@ def get_applicants():
     Returns:
         string: List of email addresses for each applicant found.
     """
-    url = config.applicants_endpoint
+    url = APPLICANTS_ENDPOINT
     response = requests.get(url, headers=get_header(), timeout=1000)
 
     if response.status_code == 200:
         logger.info("\n".join([r['email'] for r in response.json()['content']]))
         return response
-    logger.error(f"{response.status_code}: Could not get applicants")
+    logger.error("Could not get applicants")
     return response.status_code

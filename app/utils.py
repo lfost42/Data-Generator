@@ -5,8 +5,8 @@ import string
 import random
 import requests
 from faker import Faker
-import config
-from main.logging_handler import logger
+from .logging_handler import logger
+from ..config import LOGIN_ENDPOINT, ADMIN_USERNAME, ADMIN_PASSWORD
 
 
 fake = Faker()
@@ -62,17 +62,17 @@ def get_header():
     Returns:
         string: An authorization header from the admin_login user.
     """
-    url = config.login_endpoint
+    url = LOGIN_ENDPOINT
     data = {
-        "username" : config.admin_username,
-        "password" : config.admin_password
+        "username" : ADMIN_USERNAME,
+        "password" : ADMIN_PASSWORD
         }
     response = requests.post(url, json=data, timeout=1000)
 
     if response.status_code == 200:
-        logger.info("Get header succeeded.")
+        logger.info("SUCCESS: Authorization hearder saved.")
         return {
             "Authorization" : response.headers["Authorization"]
         }
-    logger.error(f"{response.status_code}: Header not saved")
+    logger.error("Header not saved")
     return response.status_code
