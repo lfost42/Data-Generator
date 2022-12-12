@@ -1,17 +1,20 @@
 """
-Main application module. 
+Main application module.
 """
-import config as config
-from app.producers.producer_applicant import create_applicant, get_applicants
-from app.producers.producer_user import create_admin_login
+from main.data_producers.applicant import create_applicant, get_applicants
+from main.data_producers.user import create_admin_login
+import config
 
 
 def main():
-    if config.create_admin == True:
+    """
+    Executes methods that are set to True in config.py.
+    """
+    if config.create_admin is True:
         create_admin_login()
-    if config.create_applicant == True:
+    if config.create_applicant is True:
         create_applicant(config.num_applicants)
-    if config.get_applicants == True:
+    if config.get_applicants is True:
         get_applicants()
 
 

@@ -1,18 +1,26 @@
 """
-Produces random data for applicant through the underwriter microservice endpoints. 
+Produces random data for applicant through the underwriter microservice endpoints.
 """
-import config as config
 import requests
-from app.logging_handler import logger
-from app.utils import random_user_id, random_user_info
-from app.producers.producer_user import get_header
+import config
+from main.logging_handler import logger
+from main.utils import random_user_id, random_user_info
+from main.data_producers.user import get_header
 
 
 def create_applicant(num_applicants):
-    URL = config.applicants_endpoint
+    """Creates the number of applicants specified in config.py.
+
+    Args:
+        num_applicants (int): Number of applicants to create.
+
+    Returns:
+        string: Response if successful, status code if not.
+    """
+    url = config.applicants_endpoint
     first_name, middle_name, last_name, email = random_user_id()
     social_security, drivers_license, phone_number, income, address = random_user_info()
-    
+
     for _ in range(num_applicants):
         data = {
             "firstName": first_name,
@@ -34,21 +42,28 @@ def create_applicant(num_applicants):
             "mailingState": "Virginia",
             "mailingZipcode": "22102"
         }
-        
-        response = requests.post(URL, json = data, headers=get_header())
-        
+        response = requests.post(url, json = data, headers=get_header(), timeout=1000)
+
         if response.status_code == 201:
-            logger.debug(f"{response.status_code}: Create applicant {last_name}, {first_name} successful.")
+            logger.debug(f"{response.status_code}: Create applicant \
+                {last_name}, {first_name} successful.")
             return response
         logger.error(f"{response.status_code}: Create applicant failed.")
+        return response.status_code
 
 
 def get_applicants():
-    URL = config.applicants_endpoint
-    response = requests.get(
-        URL, headers=get_header()
-    )
+    """Runs a get request to the applicants endpoint and returns
+    email addresses for each applicant found.
+
+    Returns:
+        string: List of email addresses for each applicant found.
+    """
+    url = config.applicants_endpoint
+    response = requests.get(url, headers=get_header(), timeout=1000)
+
     if response.status_code == 200:
         logger.info("\n".join([r['email'] for r in response.json()['content']]))
         return response
     logger.error(f"{response.status_code}: Could not get applicants")
+    return response.status_code

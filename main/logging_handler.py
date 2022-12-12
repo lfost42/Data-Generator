@@ -1,5 +1,5 @@
 """
-Logging console handler. 
+Logging console handler.
 """
 import logging
 

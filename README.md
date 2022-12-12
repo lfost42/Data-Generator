@@ -18,7 +18,9 @@ Docker Desktop
 2. Initialize and merge submodules.
 
 In aline-user-microservice and aline-underwriter-microservice run:
+
 `git submodule deinit -f .`
+
 `git submodule update --init --remote --merge`
 
 3. Run microservices:
@@ -26,8 +28,11 @@ In aline-user-microservice and aline-underwriter-microservice run:
 Right-click docker-compose.yml and select "Compose Up - Select Service" from menu. 
 
 Check boxes for the following options:
+
 `mysql`
+
 `underwriter`
+
 `user`
 
 Click OK
@@ -41,6 +46,7 @@ In the devops-data-generato folder, modify config.py in your IDE or other text e
 Run main.py
 
 In command line:  
+
 `python main.py` or `python3 main.py`
 
 ## Support
@@ -74,7 +80,7 @@ lynda.foster@smoothstack.com<br>
     - [ ] Vanilla CloudFormation
 
 ## Acknowledgements
-Developed by:
+Lead Developer:
 
 [Lynda Foster](https://git1.smoothstack.com/lynda.foster)
 
