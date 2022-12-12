@@ -18,7 +18,7 @@ Docker Desktop
 
 2. Initialize and merge submodules.
 
-In aline-user-microservice and aline-underwriter-microservice run:
+CD into the `aline-user-microservice` and `aline-underwriter-microservice` folders and run:
 
 `git submodule deinit -f .`
 
@@ -26,7 +26,7 @@ In aline-user-microservice and aline-underwriter-microservice run:
 
 3. Run microservices:
 
-Right-click docker-compose.yml and select "Compose Up - Select Service" from menu. 
+Right-click `docker-compose.yml` and select `Compose Up - Select Service` from menu. 
 
 Check boxes for the following options:
 
@@ -36,7 +36,7 @@ Check boxes for the following options:
 
 `user`
 
-Click OK
+Click `OK`
 
 4. Create a python environment, activate environment, and install requirements. 
 
@@ -44,9 +44,9 @@ Click OK
 
 5. Set up testing scripts:
 
-In the devops-data-generator folder, modify config.py in your IDE or other text editor to verify which methods and variables are required to accomplish the tests needed. 
+In the `devops-data-generator` folder, modify `config.py` in your VS Code or other IDE to verify which methods and variables are required to accomplish the tests needed. 
 
-6. Run main.py
+6. Run `main.py`:
 
 `python main.py` or `python3 main.py`
 

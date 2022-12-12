@@ -2,8 +2,8 @@
 Main application module.
 """
 import logging
-from app.data_producers.applicant import create_applicant, get_applicants
-from app.data_producers.user import create_admin_login
+from program.data_producers.applicant import create_applicant, get_applicants
+from program.data_producers.user import create_admin_login
 from .config import CREATE_ADMIN, CREATE_APPLICANT, \
     GET_APPLICANTS, NUM_APPLICANTS
 
