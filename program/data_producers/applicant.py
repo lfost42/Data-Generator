@@ -48,6 +48,7 @@ def create_applicant(num_applicants):
             logger.info("SUCCESS: Created applicant \
                 {last_name}, {first_name}.")
             return response
+        # should be rare to reach this branch.
         logger.error("Create applicant failed.")
         return response.status_code
 
@@ -65,5 +66,6 @@ def get_applicants():
     if response.status_code == 200:
         logger.info("\n".join([r['email'] for r in response.json()['content']]))
         return response
+    # will only reach when database is empty
     logger.error("Could not get applicants")
     return response.status_code
