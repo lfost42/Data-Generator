@@ -1,9 +1,9 @@
 """
 Main application module. 
 """
-import app.config as config
-from app.producer_applicant import create_applicant, get_applicants
-from app.producer_user import create_admin_login
+import config as config
+from app.producers.producer_applicant import create_applicant, get_applicants
+from app.producers.producer_user import create_admin_login
 
 
 def main():

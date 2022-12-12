@@ -5,7 +5,7 @@ import string
 import requests
 import random
 from faker import Faker
-import app.config as config
+import config as config
 from app.logging_handler import logger
 
 
@@ -47,7 +47,8 @@ def random_user_info():
         string: Social security number, drivers license, phone
         number, income, and street address. 
     """
-    social_security = f"{random_num(3)}-{random_num(2)}-{random_num(4)}"
+    social_security = fake.ssn()
+    # social_security = f"{random_num(3)}-{random_num(2)}-{random_num(4)}"
     drivers_license = f"{random.choice(string.ascii_uppercase)}-{random_num(7)}"
     phone_number = f"{random_num(3)} {random_num(3)} {random_num(4)}"
     income = random_num(6)
