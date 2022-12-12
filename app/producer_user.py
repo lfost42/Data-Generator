@@ -2,9 +2,9 @@
 Produces random data for users through the user microservice endpoints. 
 """
 import requests
-from utils import random_user_id, get_header
-from logging_handler import logger
-import config
+from app.utils import random_user_id, get_header
+from app.logging_handler import logger
+import app.config as config
 
 
 def create_admin_login():

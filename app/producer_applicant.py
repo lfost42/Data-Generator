@@ -1,11 +1,11 @@
 """
 Produces random data for applicant through the underwriter microservice endpoints. 
 """
-import config
+import app.config as config
 import requests
-from logging_handler import logger
-from utils import random_user_id, random_user_info
-from producer_user import get_header
+from app.logging_handler import logger
+from app.utils import random_user_id, random_user_info
+from app.producer_user import get_header
 
 
 def create_applicant(num_applicants):

@@ -5,8 +5,8 @@ import string
 import requests
 import random
 from faker import Faker
-import config
-from logging_handler import logger
+import app.config as config
+from app.logging_handler import logger
 
 
 fake = Faker()
