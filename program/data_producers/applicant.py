@@ -3,9 +3,9 @@ Produces random data for applicant through underwriter
 microservice endpoints.
 """
 import requests
-from ...config import APPLICANTS_ENDPOINT
-from ..logging_handler import logger
-from ..utils import random_user_id, random_user_info, get_header
+from config import APPLICANTS_ENDPOINT
+from program.logging_handler import logger
+from program.utils import random_user_id, random_user_info, get_header
 
 
 def create_applicant(num_applicants):

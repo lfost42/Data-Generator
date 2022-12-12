@@ -2,10 +2,10 @@
 Produces random data for users through the user microservice endpoints.
 """
 import requests
-from ...config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
-    ADMIN_PASSWORD, ADMIN_EMAIL, ADMIN_PHONE, RANDOM_USERNAME
-from ..utils import random_user_id, random_num
-from ..logging_handler import logger
+from config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
+    ADMIN_PASSWORD, ADMIN_PHONE, RANDOM_USERNAME
+from program.utils import random_user_id, random_num
+from program.logging_handler import logger
 
 
 def create_admin_login():
@@ -25,13 +25,15 @@ def create_admin_login():
     else:
         username = ADMIN_USERNAME
 
+    email = f"{username}@smoothstack.com"
+    
     admin_data = {
         "username" : username,
         "password" : ADMIN_PASSWORD,
         "role" : "admin",
         "firstName" : first_name,
         "lastName" : last_name,
-        "email" : ADMIN_EMAIL,
+        "email" : email,
         "phone" : ADMIN_PHONE
     }
     head = {'Content-Type': 'application/json'}
@@ -40,5 +42,6 @@ def create_admin_login():
     if response.status_code == 201:
         logger.info("SUCCESS: Created admin user")
         return response.status_code
+    #happens rarely when a duplicate email or username is attempted
     logger.error("Admin not created.")
     return response.status_code

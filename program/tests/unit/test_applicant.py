@@ -1,4 +1,5 @@
 '''
 Tests applicant producer methods. 
 '''
-import data_producers.applicant
+import program.data_producers.applicant
+

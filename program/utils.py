@@ -5,8 +5,8 @@ import string
 import random
 import requests
 from faker import Faker
-from .logging_handler import logger
-from ..config import LOGIN_ENDPOINT, ADMIN_USERNAME, ADMIN_PASSWORD
+from program.logging_handler import logger
+from config import LOGIN_ENDPOINT, ADMIN_USERNAME, ADMIN_PASSWORD
 
 
 fake = Faker()
