@@ -9,11 +9,12 @@ The Applicants generator leverages the Underwriter microservice. It requires con
 
 # Requirements:
 Docker Desktop
+
 [VS Code](https://code.visualstudio.com)
+
     -[Docker extension](https://code.visualstudio.com/docs/containers/overview)
 
-1. In a single folder, clone all Aline Financial repositories
-[Aline Financial](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster) application repositories.
+1. In a single folder, clone all [Aline Financial](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster) application repositories.
 
 2. Initialize and merge submodules.
 
