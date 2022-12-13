@@ -3,7 +3,7 @@ Produces random data for applicant through underwriter
 microservice endpoints.
 """
 import requests
-from config import APPLICANTS_ENDPOINT
+from program.config import APPLICANTS_ENDPOINT
 from program.logging_handler import logger
 from program.utils import random_user_id, random_user_info, get_header
 
@@ -42,13 +42,13 @@ def create_applicant(num_applicants):
             "mailingState": "Virginia",
             "mailingZipcode": "22102"
         }
-        response = requests.post(url, json = data, headers=get_header(), timeout=1000)
+        header = get_header()
+        response = requests.post(url, json = data, headers=header, timeout=1000)
 
         if response.status_code == 201:
-            logger.info("SUCCESS: Created applicant \
-                {last_name}, {first_name}.")
+            logger.info(f"SUCCESS: Created applicant \
+                {last_name}, {first_name}")
             return response
-        # should be rare to reach this branch.
         logger.error("Create applicant failed.")
         return response.status_code
 
@@ -61,11 +61,12 @@ def get_applicants():
         string: List of email addresses for each applicant found.
     """
     url = APPLICANTS_ENDPOINT
-    response = requests.get(url, headers=get_header(), timeout=1000)
+    header = get_header()
+    response = requests.get(url, headers=header, timeout=1000)
 
     if response.status_code == 200:
         logger.info("\n".join([r['email'] for r in response.json()['content']]))
         return response
-    # will only reach when database is empty
+
     logger.error("Could not get applicants")
     return response.status_code

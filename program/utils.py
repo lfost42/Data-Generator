@@ -5,11 +5,10 @@ import string
 import random
 import requests
 from faker import Faker
-from config import LOGIN_ENDPOINT, ADMIN_USERNAME, ADMIN_PASSWORD
 from program.logging_handler import logger
+from program.config import LOGIN_ENDPOINT, ADMIN_USERNAME, ADMIN_PASSWORD
 
 fake = Faker()
-
 
 def random_num(num: int) -> int:
     """A random number generator that passes in the number of digits as a parameter.
@@ -69,7 +68,7 @@ def get_header():
     response = requests.post(url, json=data, timeout=1000)
 
     if response.status_code == 200:
-        logger.info("SUCCESS: Authorization hearder saved.")
+        logger.info("SUCCESS: Authorization header saved.")
         return {
             "Authorization" : response.headers["Authorization"]
         }

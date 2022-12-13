@@ -4,7 +4,7 @@ Main application module.
 import logging
 from program.data_producers.applicant import create_applicant, get_applicants
 from program.data_producers.user import create_admin_login
-from config import CREATE_ADMIN, CREATE_APPLICANT, \
+from program.config import CREATE_ADMIN, CREATE_APPLICANT, \
     GET_APPLICANTS, NUM_APPLICANTS
 
 
@@ -14,9 +14,9 @@ def main():
     """
     if CREATE_ADMIN is True:
         create_admin_login()
-    if create_applicant is True:
+    if CREATE_APPLICANT is True:
         create_applicant(NUM_APPLICANTS)
-    if get_applicants is True:
+    if GET_APPLICANTS is True:
         get_applicants()
     if False in (CREATE_ADMIN, CREATE_APPLICANT, GET_APPLICANTS):
         logging.warning('Not all available methods were executed. \

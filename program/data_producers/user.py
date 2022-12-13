@@ -2,7 +2,7 @@
 Produces random data for users through the user microservice endpoints.
 """
 import requests
-from config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
+from program.config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
     ADMIN_PASSWORD, ADMIN_PHONE, RANDOM_USERNAME
 from program.utils import random_user_id, random_num
 from program.logging_handler import logger
@@ -26,7 +26,7 @@ def create_admin_login():
         username = ADMIN_USERNAME
 
     email = f"{username}@smoothstack.com"
-    
+
     admin_data = {
         "username" : username,
         "password" : ADMIN_PASSWORD,

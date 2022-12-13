@@ -3,7 +3,7 @@
 ## Usage
 This Python package was developed to generate data to persist in a MySql database for testing our implementation of the Aline Financial app. These scripts were meant to be used by software engineers that need to smoke test the microservices.
 
-The Applicants generator leverages the Underwriter microservice. It requires configuration in the config.py file where methods can be set to run or not run and method values are also set.
+The Applicants generator leverages the Underwriter microservice. It requires structuring in the `config.py` file (located in the `program` directory) where methods can be set to run or not run and method values are also set.
 
 ## Installation
 
@@ -44,7 +44,7 @@ Click `OK`
 
 5. Set up testing scripts:
 
-In the `devops-data-generator` folder, modify `config.py` in your VS Code or other IDE to verify which methods and variables are required to accomplish the tests needed. 
+In the `program` folder, modify `config.py` in your VS Code or other IDE to verify which methods and variables are required to accomplish the tests needed. 
 
 6. Run `main.py`:
 
