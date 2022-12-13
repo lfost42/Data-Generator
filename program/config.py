@@ -2,20 +2,20 @@
 Configuration variables for each data generator. The default
 endpoints do not utilize aline-gateway.
 """
+USERS_ENDPOINT = "http://localhost:8070/users"
 USER_REGISTRATION_ENDPOINT = "http://localhost:8070/users/registration"
 LOGIN_ENDPOINT = "http://localhost:8070/login"
 APPLICANTS_ENDPOINT = "http://localhost:8071/applicants"
-GET_USERS_ENDPOINT = "http://localhost:8070/users"
 
 """
-Set CREATE_ADMIN to True if running scripts on a new database or to
-create a new admin login user account. Required to execute CREATE_APPLICANT.
+Creates a new admin login user account. Required to execute CREATE_APPLICANT.
+Will only run when database does not contain a user.
 """
-CREATE_ADMIN = True
-ADMIN_USERNAME = "admin_17" #increment before every new test
-RANDOM_USERNAME = False #set to false to run unit tests
+ADMIN_USERNAME = "admin_1"
 ADMIN_PASSWORD = "P@ssword1"
 ADMIN_PHONE = "555 555 5555"
+
+GET_USERS = True
 
 """
 CREATE_APPLICANT: set number of applicants desired. Default is 1.

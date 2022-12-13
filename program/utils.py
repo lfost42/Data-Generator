@@ -33,7 +33,6 @@ def random_user_id():
     middle_name = fake.first_name()
     last_name = fake.last_name()
     email = f"{first_name.lower()}.{middle_name[0].lower()}.{last_name.lower()}@email.com"
-    # logger.info(email)
     return first_name, middle_name, last_name, email
 
 
@@ -67,7 +66,7 @@ def get_header():
     response = requests.post(url, json=data, timeout=1000)
 
     if response.status_code == 200:
-        logger.info("SUCCESS: Authorization header saved.")
+        logger.info("SUCCESS: Authorization header captured.")
         return {"Authorization" : response.headers["Authorization"]}
     logger.error("Header not saved")
     return response.status_code

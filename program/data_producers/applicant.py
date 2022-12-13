@@ -55,18 +55,19 @@ def create_applicant(num_applicants):
 
 def get_applicants():
     """Runs a get request to the applicants endpoint and returns
-    email addresses for each applicant found.
+    the IDs for every applicant found.
 
     Returns:
-        string: List of email addresses for each applicant found.
+        array: Array of applicant IDs.
     """
     url = APPLICANTS_ENDPOINT
     header = get_header()
     response = requests.get(url, headers=header, timeout=1000)
 
     if response.status_code == 200:
-        logger.info("\n".join([r['email'] for r in response.json()['content']]))
-        return response
+        id_list = [r['id'] for r in response.json()['content']]
+        logger.info("applicant IDs: " + str(id_list))
+        return id_list
 
     logger.error("Could not get applicants")
     return response.status_code
