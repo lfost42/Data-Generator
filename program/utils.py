@@ -46,7 +46,6 @@ def random_user_info():
         number, income, and street address.
     """
     social_security = fake.ssn()
-    # social_security = f"{random_num(3)}-{random_num(2)}-{random_num(4)}"
     drivers_license = f"{random.choice(string.ascii_uppercase)}-{random_num(7)}"
     phone_number = f"{random_num(3)} {random_num(3)} {random_num(4)}"
     income = random_num(6)

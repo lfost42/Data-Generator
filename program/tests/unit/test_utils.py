@@ -1,7 +1,7 @@
 '''
 Unit tests for utils.py methods.
 '''
-from program.utils import random_num, get_header
+from program.utils import random_num, get_header, random_user_id, random_user_info
 
 def test_random_num_generator_number():
     """
@@ -21,3 +21,21 @@ def test_get_header_successful():
     """
     result = get_header()
     assert isinstance(result, dict)
+
+def test_random_user_creates_data():
+    """
+    GIVEN an invokation
+    WHEN the method runs
+    THEN check that all elements return a non-empty string
+    """
+    user = random_user_id()
+    assert all(user) is True
+
+def test_random_user_info_creates_data():
+    """
+    GIVEN an invokation
+    WHEN the method runs
+    THEN check that all elements return a non-empty string
+    """
+    user = random_user_info()
+    assert all(user) is True
