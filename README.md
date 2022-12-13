@@ -55,11 +55,11 @@ lynda.foster@smoothstack.com<br>
 [Cyber Cumulus Jira](https://cyber-cumulus-smoothstack.atlassian.net/jira/software/projects/CC/boards/1)
 
 ## Roadmap
-- [ ] [Data Generation](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster/aline-data-generation)
+- [ ] [Data Generation](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster/devops-data-generator/-/branches)
+    - [x] [Applicants](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster/devops-data-generator/-/tree/feature/CC-27-Applicants-LF)
+    - [ ] Applications - in progress
     - [ ] User Data Producer
     - [ ] Banks and Branches
-    - [x] Applicants
-    - [ ] Applications
     - [ ] Transaction Data Producer
 - [ ] Docker CI/CD
     - [ ] Dockerize Images

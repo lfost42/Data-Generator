@@ -19,16 +19,11 @@ def create_admin_login():
     user = random_user_id()
     first_name = user[0]
     last_name = user[2]
-
-    if RANDOM_USERNAME is True:
-        username = f"{ADMIN_USERNAME}{random_num(4)}"
-    else:
-        username = ADMIN_USERNAME
-
-    email = f"{username}@smoothstack.com"
+    admin_name = f"{ADMIN_USERNAME}{random_num(3)}"
+    email = f"{admin_name}@smoothstack.com"
 
     admin_data = {
-        "username" : username,
+        "username" : admin_name,
         "password" : ADMIN_PASSWORD,
         "role" : "admin",
         "firstName" : first_name,
@@ -42,6 +37,7 @@ def create_admin_login():
     if response.status_code == 201:
         logger.info("SUCCESS: Created admin user")
         return response.status_code
-    #happens rarely when a duplicate email or username is attempted
-    logger.error("Admin not created.")
-    return response.status_code
+    # Happens when username or email is not unique, should almost never happen
+    elif response.status_code == 409:
+        logger.error("Indistinct data, try again.")
+        raise ValueError("409: The applicant data conflicts with other data.")

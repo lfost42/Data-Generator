@@ -21,10 +21,10 @@ def random_num(num: int) -> int:
     """
     return random.randint(10 ** (num - 1), 10 ** num - 1)
 
-
 def random_user_id():
     """A random name generator for first, middle, and last names. Interpolates
     email address using first name, middle initial, and last name.
+    Requires unique smail, SSN, DL, and phone#
 
     Returns:
         string: Random first, middle, last names with email address.
@@ -68,8 +68,6 @@ def get_header():
 
     if response.status_code == 200:
         logger.info("SUCCESS: Authorization header saved.")
-        return {
-            "Authorization" : response.headers["Authorization"]
-        }
+        return {"Authorization" : response.headers["Authorization"]}
     logger.error("Header not saved")
     return response.status_code

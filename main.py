@@ -7,7 +7,6 @@ from program.data_producers.user import create_admin_login
 from program.config import CREATE_ADMIN, CREATE_APPLICANT, \
     GET_APPLICANTS, NUM_APPLICANTS
 
-
 def main():
     """
     Executes methods that are set to True in config.py.
