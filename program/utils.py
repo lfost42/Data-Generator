@@ -69,4 +69,4 @@ def get_header():
         logger.info("SUCCESS: Authorization header captured.")
         return {"Authorization" : response.headers["Authorization"]}
     logger.error("Header not saved")
-    return response.status_code
+    raise ValueError("Cannot locate a matching header.")

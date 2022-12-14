@@ -15,8 +15,6 @@ ADMIN_USERNAME = "admin_1"
 ADMIN_PASSWORD = "P@ssword1"
 ADMIN_PHONE = "555 555 5555"
 
-GET_USERS = True
-
 """
 CREATE_APPLICANT: set number of applicants desired. Default is 1.
 GET_APPLICANTS: check whether applicants were populated in the database.
