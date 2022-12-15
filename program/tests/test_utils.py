@@ -1,6 +1,5 @@
-'''
-Unit tests for utils.py methods.
-'''
+'''Unit tests for utils.py methods.'''
+
 from program.utils import random_num, get_header, random_user_id, \
     random_user_info, random_username
 

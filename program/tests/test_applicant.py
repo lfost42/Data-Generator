@@ -1,8 +1,5 @@
-"""
-Applicant method tests.
-"""
+"""Applicant method tests."""
 from program.data_producers.applicant import create_applicant, get_applicants
-# get_applicants()
 
 def test_create_applicant_returns_json():
     """

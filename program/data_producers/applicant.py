@@ -50,7 +50,7 @@ def create_applicant(num_applicants):
                 {last_name}, {first_name}")
             return response.json()
         logger.critical(response.status_code)
-        return
+        return {}
 
 def get_applicants():
     """Runs a get request to the applicants endpoint and returns
@@ -69,4 +69,4 @@ def get_applicants():
         return id_list
 
     logger.critical(response.status_code)
-    return
+    return {}

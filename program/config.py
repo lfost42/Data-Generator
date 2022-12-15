@@ -29,6 +29,6 @@ GET_APPLICANTS = False
 """
 CREATE_APPLICATIONS_ALL_APPLICANTS: takes all applicants in the database
 and creates an application for a saving account for each applicant. Default
-is True. 
+is True.
 """
 CREATE_APPLICATIONS = False

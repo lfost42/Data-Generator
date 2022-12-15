@@ -1,6 +1,4 @@
-"""
-Helper methods.
-"""
+"""Helper methods."""
 import string
 import random
 import requests

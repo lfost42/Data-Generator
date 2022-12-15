@@ -1,6 +1,4 @@
-"""
-Logging console handler.
-"""
+"""Logging console handler."""
 import logging
 
 # Create a logger object

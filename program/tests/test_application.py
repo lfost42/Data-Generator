@@ -1,6 +1,4 @@
-"""
-Tests for application generator method.
-"""
+"""Tests for application generator method."""
 from program.data_producers.application import create_applications
 
 def test_get_applicants_returns_list():
