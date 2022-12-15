@@ -68,11 +68,17 @@ def get_user_ids():
     return []
 
 def create_user():
+    """Creates member user by sending a request to the useres endpoint
+    via the user microservice.
+
+    Returns:
+        dict: An http response in json format.
+    """
     url = USER_REGISTRATION_ENDPOINT
 
-    list = create_application()
-    membership_id = int(list[0])
-    four_ssn = int(list[1])
+    values = create_application()
+    membership_id = int(values[0])
+    four_ssn = int(values[1])
     username = random_username()
     password = "Abcd123$"
 
@@ -83,6 +89,7 @@ def create_user():
         "membershipId": membership_id,
         "lastFourOfSSN": four_ssn
     }
+    logger.info("Capturing user information ...")
     logger.critical(data)
     header = get_header()
     response = requests.post(url, json = data, headers=header, timeout=1000)

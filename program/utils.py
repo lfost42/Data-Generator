@@ -1,5 +1,4 @@
 """Helper methods."""
-import string
 import random
 import requests
 from faker import Faker
@@ -64,7 +63,7 @@ def get_header():
     response = requests.post(url, json=data, timeout=1000)
 
     if response.status_code == 200:
-        logger.info("SUCCESS: Authorization header captured.")
+        logger.info("Authorization header captured.")
         return {"Authorization" : response.headers["Authorization"]}
     logger.error("Header not saved")
     raise ValueError("Cannot locate a matching header.")

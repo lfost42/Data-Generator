@@ -31,7 +31,7 @@ CREATE_APPLICATION: Creates an application for a saving account for
 the last each applicant created. Default is False because it is
 invoked when CREATE_USER is called.
 """
-CREATE_APPLICATION = True
+CREATE_APPLICATION = False
 
 """
 CREATE_USER: takes a invokes CREATE_APPLICATION to create a member user.
