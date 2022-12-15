@@ -2,9 +2,10 @@
 Main application module.
 """
 from program.data_producers.applicant import create_applicant, get_applicants
-from program.data_producers.user import create_admin_login#, create_user
+from program.data_producers.application import create_application
+from program.data_producers.user import create_admin_login, create_user
 from program.config import CREATE_APPLICANT, GET_APPLICANTS, NUM_APPLICANTS, \
-    CREATE_APPLICATION#, CREATE_USER
+    CREATE_APPLICATION, CREATE_USER
 from program.data_producers.application import create_application
 
 def main():

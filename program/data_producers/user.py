@@ -2,8 +2,8 @@
 import requests
 from program.config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
     ADMIN_PASSWORD, ADMIN_PHONE, USERS_ENDPOINT
-from program.utils import random_user_id, get_header#, random_username
-# from program.data_producers.application import create_application
+from program.utils import random_user_id, get_header, random_username
+from program.data_producers.application import create_application
 from program.logging_handler import logger
 
 
