@@ -1,7 +1,7 @@
 *.py[cod]
 *.DS_Store
 *__pycache__
-*config.py
+program/config.py
 
 # Unit test / coverage reports
 .coverage
