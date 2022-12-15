@@ -9,9 +9,9 @@ def test_random_num_generator_number():
     WHEN a positive integer is passed in
     THEN check that it returns a number of the correct length.
     """
-    result_num = random_num(3)
+    result_num = random_num(5)
     assert isinstance(result_num, int)
-    assert len(str(result_num)) == 3
+    assert len(str(result_num)) == 5
 
 def test_get_header_successful():
     """

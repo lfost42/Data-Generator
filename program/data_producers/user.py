@@ -67,30 +67,29 @@ def get_user_ids():
         logger.error("Header not found in get_users.")
     return []
 
-# def create_user():
-#     url = USER_REGISTRATION_ENDPOINT
+def create_user():
+    url = USER_REGISTRATION_ENDPOINT
 
-#     list = create_application()
-#     membership_id = int(list[0])
-#     four_ssn = int(list[1])
-#     username = random_username()
-#     password = "Abcd123$"
-#     logger.critical(four_ssn)
+    list = create_application()
+    membership_id = int(list[0])
+    four_ssn = int(list[1])
+    username = random_username()
+    password = "Abcd123$"
 
-#     data = {
-#         "username": username,
-#         "password": password,
-#         "role": "member",
-#         "membershipId": membership_id,
-#         "lastFourOfSSN": four_ssn
-#     }
-#     logger.critical(data)
-#     header = get_header()
-#     response = requests.post(url, json = data, headers=header, timeout=1000)
+    data = {
+        "username": username,
+        "password": password,
+        "role": "member",
+        "membershipId": membership_id,
+        "lastFourOfSSN": four_ssn
+    }
+    logger.critical(data)
+    header = get_header()
+    response = requests.post(url, json = data, headers=header, timeout=1000)
 
-#     if response.status_code == 201:
-#         logger.info("SUCCESS: Created member users")
-#         logger.critical(response.json())
-#         return response.json()
-#     logger.critical(response.status_code)
-#     return {}
+    if response.status_code == 201:
+        logger.info("SUCCESS: Created member users")
+        logger.critical(response.json())
+        return response.json()
+    logger.critical(response.status_code)
+    return {}

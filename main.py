@@ -19,8 +19,8 @@ def main():
         get_applicants()
     if CREATE_APPLICATION is True:
         create_application()
-    # if CREATE_USER is True:
-    #     create_user()
+    if CREATE_USER is True:
+        create_user()
 
 if __name__ == '__main__':
     main()

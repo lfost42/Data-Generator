@@ -35,7 +35,7 @@ def create_application():
         mem_id = response.json()['createdMembers'][0]['membershipId']
         last_four = response.json()['applicants'][0]['socialSecurity'][-4:]
         data_list = [mem_id, last_four]
-
+        logger.critical(data_list)
         logger.info("SUCCESS: Created application")
         return data_list
 

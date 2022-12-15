@@ -30,7 +30,7 @@ def random_user_id():
     first_name = fake.first_name()
     middle_name = fake.first_name()
     last_name = fake.last_name()
-    email = f"{first_name.lower()}.{middle_name[0].lower()}.{last_name.lower()}@email.com"
+    email = f"{last_name.lower()}.{first_name.lower()}_{random_num(3)}@email.com"
     return first_name, middle_name, last_name, email
 
 
@@ -43,9 +43,9 @@ def random_user_info():
         number, income, and street address.
     """
     social_security = fake.ssn()
-    drivers_license = f"{random.choice(string.ascii_uppercase)}-{random_num(7)}"
+    drivers_license = f"{random_num(7)}"
     phone_number = f"{random_num(3)} {random_num(3)} {random_num(4)}"
-    income = random_num(6)
+    income = random.randint(10000,200000)
     address = fake.street_address()
     return social_security, drivers_license, phone_number, income, address
 
@@ -76,4 +76,4 @@ def random_username():
     Returns:
         str: a random username.
     """
-    return f"{fake.last_name()}_{random_num(4)}"
+    return f"{fake.last_name()}_{random_num(5)}"
