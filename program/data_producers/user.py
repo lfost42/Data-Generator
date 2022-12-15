@@ -59,7 +59,7 @@ def get_user_ids():
 
         if response.status_code == 200:
             id_list = [r['id'] for r in response.json()['content']]
-            logger.info("applicant IDs: " + str(id_list))
+            logger.info("User IDs: " + str(id_list))
             return id_list
         logger.error("Could not get users")
 
@@ -77,8 +77,8 @@ def create_user():
     url = USER_REGISTRATION_ENDPOINT
 
     values = create_application()
-    membership_id = int(values[0])
-    four_ssn = int(values[1])
+    membership_id = values[0]
+    four_ssn = values[1]
     username = random_username()
     password = "Abcd123$"
 
@@ -89,14 +89,11 @@ def create_user():
         "membershipId": membership_id,
         "lastFourOfSSN": four_ssn
     }
-    logger.info("Capturing user information ...")
-    logger.critical(data)
     header = get_header()
     response = requests.post(url, json = data, headers=header, timeout=1000)
 
     if response.status_code == 201:
-        logger.info("SUCCESS: Created member users")
-        logger.critical(response.json())
+        logger.info("SUCCESS: Created user with role of member.")
         return response.json()
     logger.critical(response.status_code)
     return {}

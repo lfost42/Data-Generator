@@ -1,5 +1,5 @@
 """Tests for user generator methods."""
-from program.data_producers.user import create_admin_login, get_user_ids#, create_users
+from program.data_producers.user import create_admin_login, get_user_ids, create_user
 
 
 def test_create_admin_login_returns_empty_dict():
@@ -22,12 +22,12 @@ def test_get_user_ids_returns_list():
     assert isinstance(result, list)
     assert get_user_ids()
 
-# def test_create_users_returns_dict():
-#     """
-#     GIVEN a bearer token
-#     WHEN the proper http get is requested
-#     THEN check that it returns a dictionary that is not empty.
-#     """
-#     result = create_users()
-#     assert isinstance(result, dict)
-#     assert create_users()
+def test_create_users_returns_dict():
+    """
+    GIVEN a bearer token
+    WHEN the proper http get is requested
+    THEN check that it returns a dictionary that is not empty.
+    """
+    result = create_user()
+    assert isinstance(result, dict)
+    assert create_user()

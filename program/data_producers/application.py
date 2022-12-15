@@ -36,7 +36,6 @@ def create_application():
         last_four = response.json()['applicants'][0]['socialSecurity'][-4:]
         data_list = [mem_id, last_four]
         logger.info("SUCCESS: Created application")
-        logger.critical(data_list)
         return data_list
 
     logger.error("No new applications created.")
