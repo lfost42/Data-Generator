@@ -16,7 +16,6 @@ def create_application():
         list: membershipId and ssn for the applicant created in a list.
     """
     url = APPLICATIONS_ENDPOINT
-    
     app_id = create_applicant(NUM_APPLICANTS)
 
     data = {

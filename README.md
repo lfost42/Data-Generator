@@ -58,8 +58,8 @@ lynda.foster@smoothstack.com<br>
 - [ ] [Data Generation](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster/devops-data-generator/-/branches)
     - [x] Applicants
     - [x] Applications
-    - [x] User Data Producer - in progress
-    - [ ] Banks and Branches
+    - [x] User Data Producer
+    - [x] Banks and Branches
     - [ ] Transaction Data Producer
 - [ ] Docker CI/CD
     - [ ] Dockerize Images
