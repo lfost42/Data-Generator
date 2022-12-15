@@ -7,7 +7,7 @@ def test_random_num_generator_number():
     """
     GIVEN a number
     WHEN a positive integer is passed in
-    THEN check that it returns a number of the correct length
+    THEN check that it returns a number of the correct length.
     """
     result_num = random_num(3)
     assert isinstance(result_num, int)
@@ -17,10 +17,11 @@ def test_get_header_successful():
     """
     GIVEN a user admin
     WHEN a valid username and password
-    THEN check that it returns successful status code.
+    THEN check that it returns a dictionary that is not empty.
     """
     result = get_header()
     assert isinstance(result, dict)
+    assert get_header()
 
 def test_random_user_creates_data():
     """
@@ -43,8 +44,9 @@ def test_random_user_info_creates_data():
 def test_random_username_creates_string():
     """
     GIVEN a user admin
-    WHEN a valid username and password
-    THEN check that it returns successful status code.
+    WHEN the method is invoked
+    THEN check that it returns a string.
     """
     result = random_username()
     assert isinstance(result, str)
+    assert len(result) > 1

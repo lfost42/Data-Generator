@@ -8,11 +8,12 @@ from program.logging_handler import logger
 from program.config import APPLICATIONS_ENDPOINT
 from program.utils import get_header
 
-def create_applications():
-    """Creates applicants via IDs retrieved from the get_applicants method.
+def create_application():
+    """Creates an application from the last ID retrieved from the
+    get_applicants method.
 
     Returns:
-        dict: membershipId and socialSecurity for each application created.
+        list: membershipId and ssn for the applicant created in a list.
     """
     url = APPLICATIONS_ENDPOINT
     applicant_ids = get_applicants()
@@ -20,7 +21,7 @@ def create_applications():
     data = {
         "applicationType": "SAVINGS",
         "noNewApplicants": True,
-        "applicantIds": applicant_ids,
+        "applicantIds": [applicant_ids[-1]],
         "applicants": [],
         "applicationAmount": 10000,
         "cardOfferId": 1,
@@ -30,11 +31,12 @@ def create_applications():
     response = requests.post(url, json = data, headers=header, timeout=1000)
 
     if response.status_code == 201:
-        id_list = [r['membershipId'] for r in response.json()['createdMembers']]
-        ssn = [r['socialSecurity'] for r in response.json()['applicants']]
-        data_dict = dict(zip(id_list, ssn))
+        mem_id = response.json()['createdMembers'][0]['membershipId']
+        last_four = response.json()['applicants'][0]['socialSecurity'][-4:]
+        data_list = [mem_id, last_four]
 
-        logger.info("SUCCESS: Created applications")
-        return data_dict
-    logger.error("No new members created.")
-    return {}
+        logger.info("SUCCESS: Created application")
+        return data_list
+
+    logger.error("No new applications created.")
+    return []

@@ -46,8 +46,7 @@ def create_applicant(num_applicants):
         response = requests.post(url, json = data, headers=header, timeout=1000)
 
         if response.status_code == 201:
-            logger.info(f"SUCCESS: Created applicant \
-                {last_name}, {first_name}")
+            logger.info("SUCCESS: Created applicant(s)")
             return response.json()
         logger.critical(response.status_code)
         return {}
@@ -57,11 +56,12 @@ def get_applicants():
     the ID for every applicant found.
 
     Returns:
-        array: Array of applicant IDs.
+        list: List of applicant IDs.
     """
     url = APPLICANTS_ENDPOINT
     header = get_header()
-    response = requests.get(url, headers=header, timeout=1000)
+    response = requests.get(url, headers=header, \
+        params={'page': 'last', 'size':20}, timeout=1000)
 
     if response.status_code == 200:
         id_list = [r['id'] for r in response.json()['content']]
@@ -69,4 +69,4 @@ def get_applicants():
         return id_list
 
     logger.critical(response.status_code)
-    return {}
+    return []

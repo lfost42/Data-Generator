@@ -27,8 +27,13 @@ NUM_APPLICANTS = 1
 GET_APPLICANTS = False
 
 """
-CREATE_APPLICATIONS_ALL_APPLICANTS: takes all applicants in the database
-and creates an application for a saving account for each applicant. Default
-is True.
+CREATE_APPLICATION: Creates an application for a saving account for
+the last each applicant created. Default is False because it is
+invoked when CREATE_USER is called.
 """
-CREATE_APPLICATIONS = False
+CREATE_APPLICATION = True
+
+"""
+CREATE_USER: takes a invokes CREATE_APPLICATION to create a member user.
+"""
+CREATE_USER = True
