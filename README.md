@@ -59,7 +59,7 @@ lynda.foster@smoothstack.com<br>
     - [x] Applicants
     - [x] Applications
     - [x] User Data Producer
-    - [x] Banks and Branches
+    - [x] Banks and Branches - in progress
     - [ ] Transaction Data Producer
 - [ ] Docker CI/CD
     - [ ] Dockerize Images
