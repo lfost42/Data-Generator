@@ -70,3 +70,12 @@ def get_header():
         return {"Authorization" : response.headers["Authorization"]}
     logger.error("Header not saved")
     raise ValueError("Cannot locate a matching header.")
+
+def random_username():
+    """A random username using the last_name property of the faker library
+    and a 4 digit number appended to avoid data collisions.
+
+    Returns:
+        str: a random username.
+    """
+    return f"{fake.last_name()}_{random_num(4)}"

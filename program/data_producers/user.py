@@ -2,6 +2,7 @@
 Produces random data for users through the user microservice endpoints.
 """
 import requests
+from program.data_producers.application import create_applications
 from program.config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
     ADMIN_PASSWORD, ADMIN_PHONE, USERS_ENDPOINT
 from program.utils import random_user_id, get_header
@@ -70,3 +71,35 @@ def get_users():
         logger.error("Header not found in get_users.")
 
     return [] #empty list returned if no users found
+
+def create_users():
+    pass
+
+def create_applications():
+    """Creates applicants via IDs retrieved from the get_applicants method.
+
+    Returns:
+        response: a json reaponse object.
+    """
+    url = USERS_ENDPOINT
+    user_info = create_applications()
+    username = ""
+    password = ""
+    membership_id = ""
+    four_ssn = ""
+
+    data = {
+        "username": username,
+        "password": password,
+        "role": "MEMBER",
+        "membershipId": membership_id,
+        "lastFourOfSSN": four_ssn
+    }
+    header = get_header()
+    response = requests.post(url, json = data, headers=header, timeout=1000)
+
+    if response.status_code == 201:
+        logger.info("SUCCESS: Created member users")
+        return response.json()
+    logger.error(response.status_code)
+    return response.status_code

@@ -48,14 +48,13 @@ def create_applicant(num_applicants):
         if response.status_code == 201:
             logger.info(f"SUCCESS: Created applicant \
                 {last_name}, {first_name}")
-            return response
-        logger.error("Create applicant failed.")
-        return response.status_code
-
+            return response.json()
+        logger.critical(response.status_code)
+        return
 
 def get_applicants():
     """Runs a get request to the applicants endpoint and returns
-    the IDs for every applicant found.
+    the ID for every applicant found.
 
     Returns:
         array: Array of applicant IDs.
@@ -69,5 +68,5 @@ def get_applicants():
         logger.info("applicant IDs: " + str(id_list))
         return id_list
 
-    logger.error("Could not get applicants")
-    return response.status_code
+    logger.critical(response.status_code)
+    return

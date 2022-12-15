@@ -1,7 +1,8 @@
 '''
 Unit tests for utils.py methods.
 '''
-from program.utils import random_num, get_header, random_user_id, random_user_info
+from program.utils import random_num, get_header, random_user_id, \
+    random_user_info, random_username
 
 def test_random_num_generator_number():
     """
@@ -39,3 +40,12 @@ def test_random_user_info_creates_data():
     """
     user = random_user_info()
     assert all(user) is True
+
+def test_random_username_creates_string():
+    """
+    GIVEN a user admin
+    WHEN a valid username and password
+    THEN check that it returns successful status code.
+    """
+    result = random_username()
+    assert isinstance(result, str)
