@@ -1,5 +1,4 @@
 """
-Uses the enclosed code to create and use a config.py file.
 Configuration variables for each data generator. The default
 endpoints do not utilize aline-gateway.
 """
@@ -8,14 +7,6 @@ USER_REGISTRATION_ENDPOINT = "http://localhost:8070/users/registration"
 LOGIN_ENDPOINT = "http://localhost:8070/login"
 APPLICANTS_ENDPOINT = "http://localhost:8071/applicants"
 APPLICATIONS_ENDPOINT = "http://localhost:8071/applications"
-
-"""
-Creates a new admin login user account. Required to execute CREATE_APPLICANT.
-Will only run when database does not contain a user.
-"""
-ADMIN_USERNAME = "admin_1" # must be at least 6 characters
-ADMIN_PASSWORD = "P@ssword1" # requires cap, lower, number, special symbol
-ADMIN_PHONE = "555 555 5555"
 
 """
 CREATE_APPLICANT: set number of applicants desired. Default is 1.

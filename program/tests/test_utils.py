@@ -1,7 +1,7 @@
 '''Unit tests for utils.py methods.'''
 
 from program.utils import random_num, get_header, random_user_id, \
-    random_user_info, random_username
+    random_user_info, random_username, random_password, admin_login_json
 
 def test_random_num_generator_number():
     """
@@ -50,3 +50,23 @@ def test_random_username_creates_string():
     result = random_username()
     assert isinstance(result, str)
     assert len(result) > 1
+    
+def test_random_password_creates_string():
+    """
+    GIVEN a user admin
+    WHEN the method is invoked
+    THEN check that it returns a string.
+    """
+    result = random_password()
+    assert isinstance(result, str)
+    assert len(result) > 1
+    
+def test_admin_login_returns_list():
+    """
+    GIVEN a the need for admin login data
+    WHEN the method is invoked
+    THEN check that it returns a non-empty list.
+    """
+    result = admin_login_json()
+    assert isinstance(result, list)
+    assert admin_login_json()

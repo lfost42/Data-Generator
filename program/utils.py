@@ -1,9 +1,11 @@
 """Helper methods."""
 import random
+import string
 import requests
+import json
 from faker import Faker
 from program.logging_handler import logger
-from program.config import LOGIN_ENDPOINT, ADMIN_USERNAME, ADMIN_PASSWORD
+from program.config import LOGIN_ENDPOINT
 
 fake = Faker()
 
@@ -56,9 +58,12 @@ def get_header():
         string: An authorization header from the admin_login user.
     """
     url = LOGIN_ENDPOINT
+    with open('logindata.json') as f:
+        login = json.load(f)
+
     data = {
-        "username" : ADMIN_USERNAME,
-        "password" : ADMIN_PASSWORD
+        "username" : login['admin']['username'],
+        "password" : login['admin']['password']
         }
     response = requests.post(url, json=data, timeout=1000)
 
@@ -76,3 +81,33 @@ def random_username():
         str: a random username.
     """
     return f"{fake.last_name()}_{random_num(5)}"
+
+def random_password():
+    """A random password using the random library.
+
+    Returns:
+        str: an 8 character password with uppercase, lowercase,
+        number, and special characters.
+    """
+    return ''.join([random.choice(string.ascii_uppercase + \
+        string.ascii_lowercase + string.digits + \
+        string.punctuation) for n in range(10)])
+
+def admin_login_json():
+    """Creates a random username and password, then saves it to
+    a json file.
+
+    Returns:
+        list: Username and password.
+    """
+    username = random_username()
+    password = random_password()    
+    login = {}
+    login['admin'] = {'username': username, 'password': password}
+
+    with open('logindata.json', 'w') as f:
+        json.dump(login, f)
+
+    logger.info(login['admin']['username'])
+    logger.info(login['admin']['password'])
+    return [username, password]

@@ -1,8 +1,8 @@
 """Produces random data for users through the user microservice endpoints."""
 import requests
-from program.config import USER_REGISTRATION_ENDPOINT, ADMIN_USERNAME, \
-    ADMIN_PASSWORD, ADMIN_PHONE, USERS_ENDPOINT
-from program.utils import random_user_id, get_header, random_username
+from program.config import USER_REGISTRATION_ENDPOINT, USERS_ENDPOINT
+from program.utils import random_user_id, get_header, random_username, \
+    random_password, admin_login_json
 from program.data_producers.application import create_application
 from program.logging_handler import logger
 
@@ -24,17 +24,15 @@ def create_admin_login():
 
     url = USER_REGISTRATION_ENDPOINT
     user = random_user_id()
-    first_name = user[0]
-    last_name = user[2]
+    admin = admin_login_json()
 
     admin_data = {
-        "username" : ADMIN_USERNAME,
-        "password" : ADMIN_PASSWORD,
+        "username" : admin[0],
+        "password" : admin[1],
         "role" : "admin",
-        "firstName" : first_name,
-        "lastName" : last_name,
-        "email" : f"{ADMIN_USERNAME}@smoothstack.com",
-        "phone" : ADMIN_PHONE
+        "firstName" : user[0],
+        "lastName" : user[2],
+        "email" : f"{admin[0]}@company.com"
     }
     head = {'Content-Type': 'application/json'}
     response = requests.post(url, json=admin_data, headers=head, timeout=1000)
@@ -75,19 +73,16 @@ def create_user():
         dict: An http response in json format.
     """
     url = USER_REGISTRATION_ENDPOINT
-
     values = create_application()
-    membership_id = values[0]
-    four_ssn = values[1]
     username = random_username()
-    password = "Abcd123$"
+    password = random_password()
 
     data = {
         "username": username,
         "password": password,
         "role": "member",
-        "membershipId": membership_id,
-        "lastFourOfSSN": four_ssn
+        "membershipId": values[0],
+        "lastFourOfSSN": values[1]
     }
     header = get_header()
     response = requests.post(url, json = data, headers=header, timeout=1000)
