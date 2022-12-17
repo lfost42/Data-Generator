@@ -1,7 +1,7 @@
 # Aline Data Generation
 
 ## Usage
-This Python package was developed to generate data to persist in a MySql database for testing our implementation of the Aline Financial app. These scripts were meant to be used by software engineers that need to smoke test the microservices.
+This Python package consists of smoke tests that generate data to persist in a MySql database. Smoke tests verify that the most important functionality is working. They are a cost-effective method for identifying and fixing defects in software.  
 
 The Applicants generator leverages the Underwriter microservice. It requires structuring in the `config.py` file (located in the `program` directory) where methods can be set to run or not run and method values are also set.
 
@@ -55,30 +55,11 @@ lynda.foster@smoothstack.com<br>
 [Cyber Cumulus Jira](https://cyber-cumulus-smoothstack.atlassian.net/jira/software/projects/CC/boards/1)
 
 ## Roadmap
-- [ ] [Data Generation](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster/devops-data-generator/-/branches)
+- [x] Data Generation=
     - [x] Applicants
     - [x] Applications
     - [x] User Data Producer
     - [x] Banks and Branches - in progress
-    - [ ] Transaction Data Producer
-- [ ] Docker CI/CD
-    - [ ] Dockerize Images
-    - [ ] Docker Compose Local
-    - [ ] Docker Compose Cloud
-- [ ] Kubernetes CI/CD
-    - [ ] Kubernetes Pod Local
-    - [ ] Kubernetes Cloud EKS
-- [ ] Terraform CI/CD
-    - [ ] Create Base Infrastructure
-- [ ] Jenkins CI/CD
-    - [ ] Jenkins Pipelines
-    - [ ] Jenkins Integration with Sonarqube
-    - [ ] Docker Compose Jenkins
-    - [ ] Kubernetes via Jenkins
-    - [ ] Terraform Plan and Apply via Jenkins
-- [ ] General CI/CD
-    - [ ] Ansible Playbooks
-    - [ ] Vanilla CloudFormation
 
 ## Acknowledgements
 Lead Developer:
@@ -95,4 +76,4 @@ With support from the Cyber Cumulus Team:
 [MIT License](LICENSE.md)
 
 ## Project status
-This project is in early development. 
+This portion of the project is completing development. 

@@ -5,7 +5,7 @@ microservice endpoint.
 import requests
 from program.data_producers.applicant import create_applicant
 from program.logging_handler import logger
-from program.config import APPLICATIONS_ENDPOINT, NUM_APPLICANTS
+from program.config import APPLICATIONS_ENDPOINT
 from program.utils import get_header
 
 def create_application():
@@ -16,7 +16,8 @@ def create_application():
         list: membershipId and ssn for the applicant created in a list.
     """
     url = APPLICATIONS_ENDPOINT
-    app_id = create_applicant(NUM_APPLICANTS)
+    app_id = create_applicant()
+    logger.critical(app_id)
 
     data = {
         "applicationType": "SAVINGS",

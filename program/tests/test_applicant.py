@@ -7,7 +7,7 @@ def test_create_applicant_returns_list():
     WHEN the proper http POST is requested
     THEN check that it returns a dictionary.
     """
-    result = create_applicant(1)
+    result = create_applicant()
     assert isinstance(result, list)
 
 def test_get_applicants_returns_list():

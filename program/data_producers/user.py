@@ -6,6 +6,28 @@ from program.utils import random_user_id, get_header, random_username, \
 from program.data_producers.application import create_application
 from program.logging_handler import logger
 
+def get_user_ids():
+    """Runs a get request to the users endpoint and returns
+    email addresses for each applicant found.
+
+    Returns:
+        string: List of email addresses for each applicant found
+        or an empty list if no users found.
+    """
+    try:
+        header = get_header()
+        url = USERS_ENDPOINT
+        response = requests.get(url, headers=header, timeout=1000)
+
+        if response.status_code == 200:
+            id_list = [r['id'] for r in response.json()['content']]
+            logger.info("User IDs: " + str(id_list))
+            return id_list
+        logger.error("Could not get users")
+
+    except ValueError:
+        logger.error("Header not found in get_users.")
+    return []
 
 def create_admin_login():
     """Creates an administrator login account to provide access to
@@ -32,8 +54,10 @@ def create_admin_login():
         "role" : "admin",
         "firstName" : user[0],
         "lastName" : user[2],
-        "email" : f"{admin[0]}@company.com"
+        "email" : f"{admin[0]}@company.com",
+        "phone" : "555-555-5555"
     }
+
     head = {'Content-Type': 'application/json'}
     response = requests.post(url, json=admin_data, headers=head, timeout=1000)
 
@@ -41,29 +65,6 @@ def create_admin_login():
         logger.info("SUCCESS: Created admin user")
         return response.json()
     return {}
-
-def get_user_ids():
-    """Runs a get request to the users endpoint and returns
-    email addresses for each applicant found.
-
-    Returns:
-        string: List of email addresses for each applicant found
-        or an empty list if no users found.
-    """
-    try:
-        header = get_header()
-        url = USERS_ENDPOINT
-        response = requests.get(url, headers=header, timeout=1000)
-
-        if response.status_code == 200:
-            id_list = [r['id'] for r in response.json()['content']]
-            logger.info("User IDs: " + str(id_list))
-            return id_list
-        logger.error("Could not get users")
-
-    except ValueError:
-        logger.error("Header not found in get_users.")
-    return []
 
 def create_user():
     """Creates member user by sending a request to the useres endpoint
@@ -84,6 +85,7 @@ def create_user():
         "membershipId": values[0],
         "lastFourOfSSN": values[1]
     }
+
     header = get_header()
     response = requests.post(url, json = data, headers=header, timeout=1000)
 

@@ -3,20 +3,17 @@ Configuration variables for each data generator. The default
 endpoints do not utilize aline-gateway.
 """
 USERS_ENDPOINT = "http://localhost:8070/users"
+# USER_REGISTRATION_ENDPOINT = "http://localhost:8080/api/users/registration"
 USER_REGISTRATION_ENDPOINT = "http://localhost:8070/users/registration"
+# LOGIN_ENDPOINT = "http://localhost:8080/api/login"
 LOGIN_ENDPOINT = "http://localhost:8070/login"
 APPLICANTS_ENDPOINT = "http://localhost:8071/applicants"
 APPLICATIONS_ENDPOINT = "http://localhost:8071/applications"
 
 """
-CREATE_APPLICANT: set number of applicants desired. Default is 1.
-GET_APPLICANTS: check whether applicants were populated in the database.
-Default is False. Used in create_application method.
+CREATE_APPLICANT: creates a single applicant
 """
 CREATE_APPLICANT = True
-NUM_APPLICANTS = 1
-
-GET_APPLICANTS = False
 
 """
 CREATE_APPLICATION: Creates an application for a saving account for

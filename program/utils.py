@@ -1,7 +1,7 @@
 """Helper methods."""
 import random
-import string
 import requests
+import string
 import json
 from faker import Faker
 from program.logging_handler import logger
@@ -46,7 +46,7 @@ def random_user_info():
     social_security = fake.ssn()
     drivers_license = f"{random_num(7)}"
     phone_number = f"{random_num(3)} {random_num(3)} {random_num(4)}"
-    income = random.randint(10000,200000)
+    income = random_num(6)
     address = fake.street_address()
     return social_security, drivers_license, phone_number, income, address
 
@@ -58,13 +58,14 @@ def get_header():
         string: An authorization header from the admin_login user.
     """
     url = LOGIN_ENDPOINT
-    with open('logindata.json') as f:
+    
+    with open('logindata.json', 'r') as f:
         login = json.load(f)
 
     data = {
         "username" : login['admin']['username'],
         "password" : login['admin']['password']
-        }
+    }
     response = requests.post(url, json=data, timeout=1000)
 
     if response.status_code == 200:
@@ -89,9 +90,9 @@ def random_password():
         str: an 8 character password with uppercase, lowercase,
         number, and special characters.
     """
-    return ''.join([random.choice(string.ascii_uppercase + \
-        string.ascii_lowercase + string.digits + \
-        string.punctuation) for n in range(10)])
+    char = ''.join([random.choice(string.ascii_lowercase) for n in range(4)]).title()
+    num = ''.join([random.choice(string.digits) for n in range(3)])
+    return char + num + "!"
 
 def admin_login_json():
     """Creates a random username and password, then saves it to
@@ -101,12 +102,13 @@ def admin_login_json():
         list: Username and password.
     """
     username = random_username()
-    password = random_password()    
+    password = random_password()  
     login = {}
     login['admin'] = {'username': username, 'password': password}
 
     with open('logindata.json', 'w') as f:
         json.dump(login, f)
+    logger.info("logindata.json populated:")
 
     logger.info(login['admin']['username'])
     logger.info(login['admin']['password'])
