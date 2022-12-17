@@ -69,6 +69,7 @@ Lead Developer:
 With support from the Cyber Cumulus Team:
 
 [Anthony Foster](https://git1.smoothstack.com/anthony.foster)<br>
+[Nathan Galler](https://git1.smoothstack.com/nathan.galler)<br>
 [Dennis Ghitas](https://git1.smoothstack.com/dennis.ghitas)<br>
 [Sebastian Marzal](https://git1.smoothstack.com/sebastian.marzal)
 
