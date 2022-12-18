@@ -1,14 +1,13 @@
 *.py[cod]
 *.DS_Store
-*__pycache__
+**__pycache__
 logindata.json
+.mypylintrc
+mipylintrc
 
 # Unit test / coverage reports
 .coverage
 .pytest_cache
-
-# Translations
-*.mo
 
 # virtual environment
 venv

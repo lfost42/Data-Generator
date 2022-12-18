@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: "bank-microservice"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}"
+    initialization-mode: always
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+app:
+  sms:
+    enable: false
+  email:
+    enable: false
+  security:
+    secret-key: "001104a5cbe95ed3bff1495a1ae92a28"
+    jwt:
+      secret-key: "my-32-character-ultra-secure-and-ultra-long-secret"
