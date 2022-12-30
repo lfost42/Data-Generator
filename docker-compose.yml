@@ -1,81 +1,59 @@
 version: "3.8"
 
 x-variables: &variables
-  DB_USERNAME: user
-  DB_PASSWORD: really_good_password
-  DB_HOST: mysql
+  DB_USERNAME: ${DB_USERNAME}
+  DB_PASSWORD: ${DB_PASSWORD}
+  DB_HOST: ${DB_HOST}
   DB_PORT: 3306
-  DB_NAME: alinedb
-  APP_SERVICE_HOST: host.docker.internal
-  ENCRYPT_SECRET_KEY: "001104a5cbe95ed3bff1495a1ae92a28"
-  JWT_SECRET_KEY: "my-32-character-ultra-secure-and-ultra-long-secret"
+  DB_NAME: ${DB_NAME}
+  APP_SERVICE_HOST: ${APP_SERVICE_HOST}
+  ENCRYPT_SECRET_KEY: ${ENCRYPT_SECRET_KEY}
+  JWT_SECRET_KEY: ${JWT_SECRET_KEY}
 
 x-react-variables: &react-variables
-  REACT_APP_API: http://gateway:8080/api
+  REACT_APP_API_BASEURL: http://localhost:8080
+  REACT_APP_API: http://localhost:8080/api
 
 services:
   # Database
   mysql:
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: really_good_password
-      MYSQL_PASSWORD: really_good_password
-      MYSQL_USER: user
-      MYSQL_DATABASE: alinedb
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DATABASE: ${DB_NAME}
     volumes:
-      - test-data:/var/lib/mysql
+      - db-data:/var/lib/mysql
     ports:
       - 3306:3306
 
+  # Maven Projects
   gateway:
-    build:
-      context: ./aline-gateway
-      dockerfile: ../Dockerfile.maven
+    image: lyndasm/aline:aline-gateway
     ports:
-      - ${GATEWAY_PORT}:${GATEWAY_PORT}
+      - 8080:8080
     environment:
       <<: *variables
-      APP_DIR: .
-      APP_PORT: ${GATEWAY_PORT}
-
-  bank:
-    build:
-      context: ./aline-bank-microservice
-      dockerfile: ../Dockerfile.maven
-    depends_on:
-      - mysql
-    ports:
-      - ${BANK_PORT}:${BANK_PORT}
-    environment:
-      <<: *variables
-      APP_DIR: ./bank-microservice
-      APP_PORT: ${BANK_PORT}
+      APP_PORT: 8080
 
   underwriter:
-    build:
-      context: ./aline-underwriter-microservice
-      dockerfile: ../Dockerfile.maven
+    image: lyndasm/aline:aline-underwriter
     depends_on:
       - mysql
     ports:
-      - ${UNDERWRITER_PORT}:${UNDERWRITER_PORT}
+      - 8071:8071
     environment:
       <<: *variables
-      APP_DIR: ./underwriter-microservice
-      APP_PORT: ${UNDERWRITER_PORT}
+      APP_PORT: 8071
 
   user:
-    build:
-      context: ./aline-user-microservice
-      dockerfile: ../Dockerfile.maven
-    depends_on:
-      - mysql
+    image: lyndasm/aline:aline-user
     ports:
-      - ${USER_PORT}:${USER_PORT}
+      - 8070:8070
     environment:
       <<: *variables
-      APP_DIR: ./user-microservice
-      APP_PORT: ${USER_PORT}
+      APP_PORT: 8070
 
 volumes:
-  test-data:
+  db-data:

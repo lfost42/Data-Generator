@@ -5,8 +5,6 @@ This Python package are smoke tests that generate data to persist in a MySql dat
 
 The data generators leverage the Underwriter, User, and Bank microservice. It requires structuring in the config.py file (located in the program directory) where methods can be set to run or not run and method values are also set.
 
-NOTE: The dockerfile is not optimized for containerization deployment. It was created to require a minimal repo folder sizes and should only be used for smoke tests.
-
 ![logo](diagram.png)
 
 ## Installation
@@ -15,17 +13,23 @@ NOTE: The dockerfile is not optimized for containerization deployment. It was cr
 
 1. [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 2. [VS Code](https://code.visualstudio.com)
-3. [Docker extension](https://code.visualstudio.com/docs/containers/overview)
-4. [Java SDK](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
-5. [Apache Maven](https://maven.apache.org/install.html)
 
 ### Set up Docker Images for the Aline Financial application:
 
-1. Clone the [Aline Devops](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster/aline-devops) repo. The underwriter and user microservice is slightly modified from the original repo to deactivate email verification.
+1. Clone the [Smoke Test Data Generator](https://git1.smoothstack.com/cohorts/2022/organizations/cyber-cumulus/lynda-foster/devops-data-generator/-/tree/develop) repo. 
+
+2. Pull docker hub images:
+```
+docker pull lyndasm/aline:mysql
+docker pull lyndsm/aline:aline-gateway
+docker pull lyndasm/aline:aline-underwriter
+docker pull lyndasm/aline:aline-user
+docker pull lyndasm/aline:aline-bank
+```
 
 3. Run microservices:
 
-Right-click `docker-compose.yml` and select `Compose Up`
+`docker compose -f "docker-compose.yml" up -d --build`
 
 4. Create a python environment, activate environment, and install requirements. 
 
@@ -33,7 +37,7 @@ Right-click `docker-compose.yml` and select `Compose Up`
 
 5. Set up testing scripts:
 
-In the `progmainram` folder, modify `config.py` in your VS Code or other IDE to verify which methods and variables are required for this test. 
+In the `main` folder, modify `config.py` in your VS Code or other IDE to verify which methods and variables are required for this test. 
 
 6. Run `main`:
 
